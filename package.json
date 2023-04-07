@@ -1,5 +1,5 @@
 {
-  "name": "edgio-marko-run-example",
+  "name": "marko.rishi.app",
   "type": "module",
   "scripts": {
     "build": "marko-run build src/index.ts && npm run css:build",

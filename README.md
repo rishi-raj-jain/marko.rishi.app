@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://marko.rishi.app">
-    <img alt="Rishi Raj Jain - Technical Customer Success Manager at Edgio" src="https://marko.rishi.app/static/social-media-card.jpg">
+    <img alt="Rishi Raj Jain - Technical Customer Success Manager at Edgio" src="https://rishi.app/static/social-media-card.jpg">
   </a>
 </p>
 

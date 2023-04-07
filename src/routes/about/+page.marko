@@ -19,25 +19,26 @@
               <span className='text-lg font-semibold text-zinc-600 dark:text-gray-400'>
                 ${item}
               </span>
-              <for|exp| of=($global.timeline[item])>
-                <div class='relative mt-5 flex flex-row items-start space-x-5'>
-                  <div class='mt-1 h-[12px] w-[12px]'>
-                    <Heart width=12 height=21/>
-                  </div>
-                  <div class='flex flex-col'>
-                    <span class='text-md font-semibold text-zinc-600 dark:text-gray-400 sm:text-lg'>
-                      $!{exp.content.Title}
-                    </span>
-                    <div class='font-light text-slate-600 dark:text-slate-400'>
-                      $!{exp.renderedText}
+              <if(Object.keys($global.timeline).length > 0)>
+                <for|exp| of=($global.timeline[item])>
+                  <div class='relative mt-5 flex flex-row items-start space-x-5'>
+                    <div class='mt-1 h-[12px] w-[12px]'>
+                      <Heart width=12 height=21/>
+                    </div>
+                    <div class='flex flex-col'>
+                      <span class='text-md font-semibold text-zinc-600 dark:text-gray-400 sm:text-lg'>
+                        $!{exp.content.Title}
+                      </span>
+                      <div class='font-light text-slate-600 dark:text-slate-400'>
+                        $!{exp.renderedText}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </for>
+                </for>
+              </if>
             </div>
           </for>
         </if>
-        <div/>
       </div>
     </div>
   </div>

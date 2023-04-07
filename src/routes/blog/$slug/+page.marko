@@ -1,0 +1,17 @@
+<main class='flex flex-col items-center text-black dark:text-gray-200'>
+  <div class='flex w-full max-w-[90vw] lg:max-w-[75vw] flex-col py-10 sm:px-10'>
+    <div class='flex w-full flex-col items-center'>
+      <div class='w-full md:max-w-2xl'>
+        <div class='flex w-full flex-col items-center'>
+          <DateString date=new Date($global.post.first_published_at)/>
+          <h1 class='mt-3 mb-7 text-center text-2xl font-bold sm:text-4xl'>
+            ${$global.post.content.title}
+          </h1>
+          <Author post=$global.post/>
+        </div>
+        <div class='mt-7 h-[1px] w-full bg-gray-200'/>
+        <Article post=($global.post.content.long_text)/>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,58 @@
+class {
+    onMount() {
+        document.querySelectorAll('h2, h3, h4, h5, h6').forEach((element) => {
+            element.onclick = () => (window.location.hash = `#${element.id}`)
+            element.classList.add('heading_hover_hash')
+        })
+        // Reference
+        // https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
+        window.fallbackCopyTextToClipboard = (text) => {
+            var textArea = document.createElement('textarea')
+            textArea.value = text
+            textArea.style.top = '0'
+            textArea.style.left = '0'
+            textArea.style.position = 'fixed'
+            document.body.appendChild(textArea)
+            textArea.focus()
+            textArea.select()
+            try {
+                var successful = document.execCommand('copy')
+                var msg = successful ? 'successful' : 'unsuccessful'
+                console.log('Fallback: Copying text command was ' + msg)
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err)
+            }
+
+            document.body.removeChild(textArea)
+        }
+        window.copyTextToClipboard = (selector) => {
+            const elementSelector = document.querySelector(selector)
+            let elementText = elementSelector.innerText
+            if (elementText.startsWith('Copy\n')) {
+                elementText = elementText.replace('Copy\n', '')
+            } else if (elementText.startsWith('Copied\n')) {
+                elementText = elementText.replace('Copied\n', '')
+            }
+            if (!navigator.clipboard) {
+                window.fallbackCopyTextToClipboard(elementText)
+                return
+            }
+            navigator.clipboard.writeText(elementText).then(
+                function () {
+                    elementSelector.querySelector(`${selector}-text`).innerHTML = `Copied`
+                    elementSelector.querySelector(
+                        `${selector}-icon`
+                    ).innerHTML = `<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>`
+                    console.log('Async: Copying to clipboard was successful!')
+                },
+                function (err) {
+                    console.error('Async: Could not copy text: ', err)
+                }
+            )
+        }
+    }
+}
+
+<article class='prose mt-10 flex max-w-none flex-col items-center text-sm dark:prose-light'>
+    $!{input.post}
+</article>

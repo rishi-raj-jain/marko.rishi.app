@@ -16,7 +16,7 @@
         <if($global.timeline)>
           <for|item| of=Object.keys($global.timeline).sort((a, b) => (a > b ? -1 : 1))>
             <div class='mt-8 flex flex-col'>
-              <span className='text-lg font-semibold text-zinc-600 dark:text-gray-400'>
+              <span class='text-lg font-semibold text-zinc-600 dark:text-gray-400'>
                 ${item}
               </span>
               <if(Object.keys($global.timeline).length > 0)>
